@@ -1,25 +1,17 @@
-def masking_card2(card_number: str) -> str:
-    """
-    Функция принимает номер карты и зашифровывает его
-    :param card_number: Номер для маскирования
-    :return: Маскированный по правилу номер карты
-    """
-    for i, s in enumerate(card_number):
-        if s.isdigit():
-            break
-    return card_number[:i + 4] + ' ' + card_number[i + 5:i + 7] + '** **** ' + card_number[i + 12:]
+from masks import masking_account, masking_card
 
 
-def masking_account2(account_number: str) -> str:
+def masking_operation(account_number: str) -> str:
     """
-    Функция принимает номер счета и зашифровывает его
+    Функция принимает номер карты или счета и зашифровывает его
     :param account_number: Номер для маскирования
-    :return: Маскированный по правилу номер
+    :return: Маскированный по правилу номер карты или счета
     """
-    for i, s in enumerate(account_number):
-        if s.isdigit():
-            break
-    return account_number[:5] + '**' + account_number[-4:]
+    number_splitted = account_number.split(" ")
+    if len(number_splitted[-1]) == 20:
+        return number_splitted[0] + " " + masking_account(number_splitted[-1])
+    elif len(number_splitted[-1]) == 16:
+        return " ".join(number_splitted[:-1]) + " " + masking_card(number_splitted[-1])
 
 
 def formatting_time(time_: str) -> str:
@@ -28,4 +20,4 @@ def formatting_time(time_: str) -> str:
     :param time_: входящая строка со временем и датой
     :return: Отформатированная по правилу дата
     """
-    return time_[8:10] + '.' + time_[5:7] + '.' + time_[:4]
+    return time_[8:10] + "." + time_[5:7] + "." + time_[:4]

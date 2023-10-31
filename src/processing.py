@@ -1,7 +1,7 @@
 from widget import formatting_time
 
 
-def filter_dicts_by_state(dicts: list[dict], state="EXECUTED") -> list[dict]:
+def filter_dicts_by_state(dicts: list[dict], state: str ="EXECUTED") -> list[dict]:
     """
     Фильтрует список словарей по значению ключа 'state'.
     :param dicts: Список словарей для фильтрации.

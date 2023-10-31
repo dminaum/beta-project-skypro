@@ -12,6 +12,8 @@ def masking_operation(account_number: str) -> str:
         return number_splitted[0] + " " + masking_account(number_splitted[-1])
     elif len(number_splitted[-1]) == 16:
         return " ".join(number_splitted[:-1]) + " " + masking_card(number_splitted[-1])
+    else:
+        return 'Неправильно введен номер карты/счета. Пожалуйста, попробуйте еще раз'
 
 
 def formatting_time(time_: str) -> str:

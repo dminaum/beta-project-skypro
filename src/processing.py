@@ -1,7 +1,7 @@
-from widget import formatting_time
+from src.widget import formatting_time
 
 
-def filter_dicts_by_state(dicts: list[dict], state: str = "EXECUTED") -> list[dict]:
+def sort_dicts_by_state(dicts: list[dict], state: str ="EXECUTED") -> list[dict]:
     """
     Фильтрует список словарей по значению ключа 'state'.
     :param dicts: Список словарей для фильтрации.
@@ -11,7 +11,7 @@ def filter_dicts_by_state(dicts: list[dict], state: str = "EXECUTED") -> list[di
     return [d for d in dicts if d.get("state") == state]
 
 
-def filter_dicts_by_date(dicts: list[dict], reverse: bool = True) -> list[dict]:
+def sort_dicts_by_date(dicts: list[dict], reverse: bool = True) -> list[dict]:
     """
     Сортирует список словарей по убыванию даты.
     :param dicts: Список словарей для сортировки.

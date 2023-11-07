@@ -1,4 +1,5 @@
-from masks import masking_account, masking_card
+from datetime import datetime
+from src.masks import masking_account, masking_card
 
 
 def masking_operation(account_number: str) -> str:
@@ -22,4 +23,4 @@ def formatting_time(time_: str) -> str:
     :param time_: входящая строка со временем и датой
     :return: Отформатированная по правилу дата
     """
-    return time_[8:10] + "." + time_[5:7] + "." + time_[:4]
+    return datetime.strptime(time_, "%Y-%m-%dT%H:%M:%S.%f").strftime("%d.%m.%Y")

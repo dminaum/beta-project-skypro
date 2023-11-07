@@ -1,5 +1,5 @@
 from datetime import datetime
-from src.masks import masking_account, masking_card
+from src.masks import masking_card, masking_account
 
 
 def masking_operation(account_number: str) -> str:

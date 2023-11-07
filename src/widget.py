@@ -1,5 +1,6 @@
 from datetime import datetime
-from src.masks import masking_card, masking_account
+
+from src.masks import masking_account, masking_card
 
 
 def masking_operation(account_number: str) -> str:
@@ -14,7 +15,7 @@ def masking_operation(account_number: str) -> str:
     elif len(number_splitted[-1]) == 16:
         return " ".join(number_splitted[:-1]) + " " + masking_card(number_splitted[-1])
     else:
-        return 'Неправильно введен номер карты/счета. Пожалуйста, попробуйте еще раз'
+        return "Неправильно введен номер карты/счета. Пожалуйста, попробуйте еще раз"
 
 
 def formatting_time(time_: str) -> str:

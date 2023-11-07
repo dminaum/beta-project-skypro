@@ -6,7 +6,7 @@ def masking_card(card_number: str) -> str:
     """
 
     if len(card_number) == 16:
-        masked_card = card_number[:4] + ' ' + card_number[4:6] + "** **** " + card_number[12:]
+        masked_card = card_number[:4] + " " + card_number[4:6] + "** **** " + card_number[12:]
         return masked_card
     else:
         return "Неправильно введён номер карты"

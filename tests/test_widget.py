@@ -1,43 +1,23 @@
 import pytest
 from src.widget import masking_operation, formatting_time
 
-"""
-Фикстура для подготовки данных тестов
-"""
-
-
-@pytest.fixture
-def valid_card_numbers():
-    return [
+@pytest.mark.parametrize('input_number, expected_result', [
         ("Maestro 1234567890123456", "Maestro 1234 56** **** 3456"),
-        ("MasterCard 9876543210987654", "MasterCard 9876 54** **** 7654")
-    ]
-
-
-@pytest.fixture
-def invalid_card_numbers():
-    return [
-        "Maestro 12345678901234567",
-        "MasterCard 987654321098765"
-    ]
-
-
-@pytest.fixture
-def valid_account_numbers():
-    return [
+        ("MasterCard 9876543210987654", "MasterCard 9876 54** **** 7654"),
         ("Счет 12345678901234567890", "Счет **7890"),
         ("Счет 98765432109876543210", "Счет **3210")
-    ]
+    ])
+def test_masking_operation_valid(input_number, expected_result):
+    assert masking_operation(input_number) == expected_result
 
-
-@pytest.fixture
-def invalid_account_numbers():
-    return [
+@pytest.mark.parametrize('invalid_number', [
+        "Maestro 12345678901234567",
+        "MasterCard 987654321098765",
         "Счет 1234567890",
         "Счет 123456789012345678901"
-    ]
+    ])
+def test_masking_operation_invalid(invalid_number):
+    assert masking_operation(invalid_number) == 'Неправильно введен номер карты/счета. Пожалуйста, попробуйте еще раз'
 
-"""
-Тесты для функции operation
-"""
+
 
